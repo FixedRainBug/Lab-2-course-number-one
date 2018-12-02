@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset=windows-1251>
+			<title> Реєстрація </title>
+			<!-- <script src="D:/jquery-validation-1.17.0/lib/jquery.js" type="text/javascript"></script>
+			<script src="D:/jquery-validation-1.17.0/dist/jquery.validate.min.js" type="text/javascript"></script>
+	
+			-->	
+			<script type='text/javascript'>
+			
+			
+			
+			
+			
+			
+			function Timeout(){
+			var x=Form.surname.value;
+			
+			if (x.length==0) {
+location.assign('file:///C:/Users/User/Desktop/Login1.html#help1');
+            
+			}}
+			setTimeout(function(){Timeout();},80000);
+			
+			/*
+			
+			function validate(){
+			var check_text=/^[А-Яа-я+]/;
+			var check_email=/[0-9a-z_]+@[0-9a-z_]+\.[a-z]{2,5}/i;
+			var check_group=/[А-Я]{2}-[0-9]{2}/;
+			var nam=Form.name.value;
+			var sur=Form.surname.value;
+			var twon=Form.twoname.value;
+			var em=Form.email.value;
+			var gr=Form.group.value;
+			if (check_text.test(sur)==false||sur.length==0) {
+			document.getElementById('surnamev').innerHTML="Введіть будь ласка коректно Ваше прізвище."; return false;} else{
+			if (check_text.test(nam)==false||nam.length==0) {document.getElementById('namev').innerHTML="Введіть будь ласка коректно Ваше ім'я."; return false;} else{
+			if (check_text.test(twon)==false||twon.length==0) {document.getElementById('twonamev').innerHTML="Введіть будь ласка коректно Ваше по-батькові."; return false;} else{
+			if (check_email.test(em)==false||em.length==0) {document.getElementById('emailv').innerHTML="Введіть будь ласка Вашу електронну пошту в форматі &quot text@text.text &quot."; return false;} else{
+			Stud=new Student(nam,sur,25,1);
+			alert(Stud.name+' '+Stud.surname+' '+Stud.age+' '+Stud.course);
+			Stud.ChangeSurname('Парахонько');
+			alert(Stud.surname);
+			Stud.GetOlder(35);
+			alert(Stud.age);
+			Stud.MoveToSecondCourse();
+			alert(Stud.course);
+			//alert();
+			if (check_group.test(gr)==false||gr.length==0) {document.getElementById('groupv').innerHTML="Введіть будь ласка Вашу групу в форматі &quot ФБ-53 &quot"; return false;}
+			}}}}
+			*/
+			
+			
+  function Student(name,surname,age, course) {
+   //Свойства шаблона
+   this.name=name;
+   this.age=age;
+   this.surname=surname;
+   this.course=course;
+  //Методы шаблона
+   this.GetOlder=function GetOlder(age) {this.age=age; 
+   }
+   this.ChangeSurname=function ChangeSurname(surname){this.surname=surname;}
+   this.MoveToSecondCourse= function MoveToSecondCourse(){this.course=this.course+1;}
+}
+			
+			
+			
+			</script>
+	<!--		<script >
+	$("form").validate({
+		rules: {
+			name: {
+				required: true,
+				minlength: 2,
+				},
+			surname: {
+				required: true,
+				minlength: 2,
+				},
+		    twoname: {
+				required: true,
+				minlength: 2,
+				},
+			email: {
+				required: true,
+				email: true,
+			},
+			group:{
+				required:true,
+			    minlength:5,
+				maxlength:5,
+			}
+		},
+		messages:{
+			name: {
+				required: "Поле повинно бути заповненим.",
+				minlength: "Мінімальна довжина - два символи.",
+				},
+			surname: {
+				required: "Поле повинно бути заповненим.",
+				minlength: "Мінімальна довжина - два символи.",
+				},
+		    twoname: {
+				required: "Поле повинно бути заповненим.",
+				minlength: "Мінімальна довжина По-батькові - 2 символи. ",
+				},
+			email: {
+				required: "Поле повинно бути заповненим.",
+				email: "Поле повинно бути заповненим правильно.",
+			},
+			group:{
+				required:"Поле повинно бути заповненим.",
+			    minlength:"Поле повинно бути заповненим в формі &quot ФБ-53 &quot.",
+				maxlength:"Поле повинно бути заповненим в формі &quot ФБ-53 &quot.",
+			}
+		}
+	});
+			
+			
+		
+			
+</script>  -->
+		</head>
+
+	<style type='text/css'>
+	
+#button  /* Кнопка Зареєструвати */
+	{
+	width:100%; 
+	border-radius:15px; 
+	padding:2%; 
+	font-size:30px 
+}
+
+p       
+	{
+	font-size:18px
+}
+
+legend   /* Назва частини форми */
+	{
+	font-size:25px
+}
+
+fieldset   /* Частина форми */
+	{
+	background: #fff;
+	border:bold;
+}
+
+.modalbackground   /* Фон за діалоговим вікном */
+	{
+	margin: 0;
+	padding: 0;
+	position: fixed;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	background: rgba(0,0,0,0.5);
+	z-index:100; 
+	opacity:0;
+	pointer-events: none; 
+}
+
+.modalbackground:target  /* Запуск діалогового вікна */
+	{
+	opacity: 1;  
+	pointer-events: auto; 
+}
+
+.modalwindow  /* Вид діалогового вікна */
+	{
+	width: 200%;
+	max-width: 1100px;
+	margin: 5% auto;
+	position: relative;
+	padding: 4%;
+	background: #fff;
+	border-radius: 10px;
+}
+
+.modalwindow h3 /* Заголовок діалогового вікна */
+	{
+	padding: 0;
+	margin: 0;
+}
+
+/*.modalwindow p   /* Текст діалогового вікна */
+	{
+	padding: 0;
+	margin: 4% 0 8% 0;
+}*/
+
+.modalwindow a  /* Кнопка Закрити */
+	{
+	display: block;
+	color: red;
+	background: blue;
+	padding: 2%;
+	margin: 0 auto;	
+	width: 50%;
+	border-radius: 3px;
+	text-align: center;
+}
+
+.modalwindow a:hover   /* Наведення курсору на кнопку Закрити */
+	{
+	background: #47a;
+}
+
+
+.mainmenu   /* Кнопка головне меню */
+	{
+    	background-color: blue;
+    	color: white;
+    	border: none;
+    	cursor: pointer;
+    	padding:10px;
+    	margin-top:10px;
+}
+
+.dropmenu   /* Випадаюче меню */
+	{
+	position: relative;
+	display: inline-block;
+}
+
+.dropmenu1  /* Елемент випадаючого меню */
+	{
+	display: none;
+	background-color: grey;
+	min-width: 200px;
+}
+
+.dropmenu1 a   /* Назва елементу меню */
+	{
+	color: white;
+	padding: 10px;
+	text-decoration: none;
+	display: block;
+}
+ 
+.dropmenu:hover .dropmenu1   /* Наведення на елементи меню */
+	{
+	display: block;
+}
+
+.dropmenu li:hover a  /* Підсвітити елемент меню */
+	{	
+	background-color :green;
+}
+
+	</style>
+		
+
+	<body bgcolor="#FFFFCC">
+		<header style="background:#99CCFF; height:30px;width:100%; margin:auto;">
+			<p style="text-align:  center"><big><b> Реєстрація </b></big></p>
+			<br />
+		</header>
+
+
+	<nav>
+		<div class="dropmenu">
+  			<button class="mainmenu">Главное меню</button>
+			<ul class="dropmenu1">
+    				<li><a href="file:///C:/Users/User/Desktop/Lab1.html">ФТІ</a></li>
+    				<li><a href="file:///C:/Users/User/Desktop/Login.html">Реєстрація</a></li>
+  			</ul>
+		</div>
+	</nav>
+
+<br />
+<br />
+<script language="php" >
+<?php 
+
+class User {
+	protected $Surname;
+    protected $Name;
+	protected $Twoname;
+	protected $Birthday;
+	
+	
+	function SetSurname($S1){
+	   $this->$Surname=$S1;
+	}
+    function SetName($N1){
+	   $this->$Name=$N1;
+	}
+    function SetTwoname($T1){
+	   $this->$Twoname=$T1;
+	}
+    function SetBirthday($B1){
+	   $this->$Birthday=$B1;
+	}
+    function GetSurname(){
+	   return $this->$Surname;
+	}
+	function GetName(){
+	   return $this->$Name;
+	}
+	function GetTwoname(){
+	   return $this->$Twoname;
+	}
+	function GetBirthday(){
+	   return $this->$Birthday;
+	}
+
+}
+
+
+class Student extends User{
+     protected $Faculty;
+	 protected $Speciality;
+	 protected $Group;
+	 
+	 function SetFaculty($F1){
+	   $this->$Faculty=$F1;
+	}
+	function SetSpeciality($S1){
+	   $this->$Speciality=$S1;
+	}
+	function SetGroup($G1){
+	   $this->$Group=$G1;
+	}
+    function GetYear(){
+	   $year = "201"+substr($this->$Group;4;1);
+	   return $year;
+	
+	}
+	function GetSubgroup(){
+	    return substr($this->$Group;5;1)
+	}
+	function GetFaculty(){
+	   return $this->$Faculty;
+	}
+	function GetSpeciality(){
+	   return $this->$Speciality;
+	}
+	function GetGroup(){
+	   return $this->$Group;
+	}
+}
+
+
+function cleanvar($value){
+    $value = trim($value);
+    $value = stripslashes($value);
+    $value = strip_tags($value);
+    $value = htmlspecialchars($value);
+    
+    return $value;
+}
+
+function checklength($value = "", $min, $max) {
+    $result = (mb_strlen($value) < $min || mb_strlen($value) > $max);
+    return !$result;
+}
+
+
+
+?>
+</script>
+
+
+	<article>
+		<img src="фти.jpg" width='300' height='300'/>
+		<br />
+		<b> <a href='file:///C:/Users/User/Desktop/Login.html#help1'><i>(Допомога)</i></a></b>
+	<form name='Form' action="http://localhost/send.php" method="POST">
+		<fieldset> 
+			<legend> Про себе</legend>
+			<p> Прізвище (обов'язково) </p>
+				<input type="text" name="surname" id='surname' /><span id='surnamev'></span>
+			<p> Ім'я (обов'язково)</p>
+				<input type="text" name='name' id='name' /><span id='namev'></span>
+			<p> По-батькові </p>
+				<input type="text" name="twoname" id='twoname'/><span id='twonamev'></span>
+			<p> Дата народження </p>
+				<input type="date" id='date' />
+			<p> Стать </p>
+				<input type="radio" name="S" value="m" />Чоловіча
+				<input type="radio" name="S" value="f" />Жіноча
+		</fieldset>
+
+<br />
+
+		<fieldset> 
+			<legend> Дані користувача </legend>
+			<p> Мобільний телефон (у форматі 8-0**-***-**-**) </p>
+				<input type="tel" pattern='8-0[0-9]{2}-[0-9]{3}-[0-9]{2}-[0-9]{2}' />
+			<p> Електронна пошта (обов'язково)</p>
+				<input type="email" name='email' id='email' /><span id='emailv'></span>
+			<p> Пароль (обов'язково)</p>
+				<input type="password" name='password'/>
+		</fieldset>
+
+<br />
+
+		<fieldset> 
+			<legend> ФТІ </legend>
+			<p>Ваша спеціальність (обов'язково)</p>
+				<select name="spec" id="spec" required='required'>
+					<option value="105"> 105 Прикладна фізика </option>
+					<option value="113"> 113 Прикладна математика </option>
+					<option value="125"> 125 Кібербезпека </option>
+				</select>
+			<p> Ваша група </p>
+				<input type="text" name='group'  id='group'/><span id='groupv'></span>
+			<p> Рік вступу </p>
+				<input type="number" name='year1' min='1995' max='2018' step='1' />
+			<p> Рік випуску </p>
+				<input type="number" name='year2' min='1998' max='2022' step='1' />
+		</fieldset>
+
+<br />
+
+		<fieldset> 
+			<legend> Міні-опитування </legend>
+			<p> Чи сподобалося Вам навчатися в КПІ? </p>
+				<input type="radio" name="Q1" value="y" /> Так
+				<input type="radio" name="Q1" value="n" /> Ні <br />
+			<p> Чи сподобалося Вам навчатися саме на факультеті ФТІ? </p>
+				<input type="radio" name="Q2" value="y" /> Так
+				<input type="radio" name="Q2" value="n" /> Ні  <br />
+			<p> Чи отримали Ви знання, необхідні для подальшого працевлаштування? </p>
+				<input type="radio" name="Q3" value="y" /> Так
+				<input type="radio" name="Q3" value="n" /> Ні
+		</fieldset>
+
+
+<br />
+<br />
+
+
+		<input id="button" type="submit" value="Зареєструвати сторінку" />
+
+<br />
+<br />
+
+
+
+	</form>
+	
+
+		<div id="help1" class="modalbackground">
+			<div class="modalwindow">
+				<h3>Правила заповнення розділу "Про себе"</h3>
+				<p>
+					<ul>
+						<li>Введіть Ваше Прізвище, Ім'я та По-батькові.<b><i> Увага! Пункти Прізвище та Ім'я є обов'язковими!</i></b> </li>
+						<li>Введіть дату Вашого народження. Ви можете ввести за допомогою календаря, стрілок чи самостійно з клавіатури. </li>
+						<li>Зазначте Вашу стать.</li>
+					</ul>
+				<br />
+				<h3>Правила заповнення розділу "Дані користувача"</h3>
+				<p>
+					<ul>
+						<li>Введіть номер вашого мобільного телефону за шаблоном. Наприклад, 8-033-333-33-33. </li>
+						<li>Введіть пошту, якою Ви користуєтесь.<b><i> Увага! Цей пункт є обов'язковим для Вашої подальшої ідентифікації!</i></b></li>
+						<li>Обов'язково придумайте пароль. <i><b>Будьте уважні!</b></i></li>
+					</ul>
+				</p>
+				<br />
+				<h3>Правила заповнення розділу "ФТІ"</h3>
+				<p>
+					<ul>
+						<li>Зазначте Вашу спеціальність, обравши її з випадаючого списка. <i><b>Обов'язково!</b></i> </li>
+						<li>Введіть групу, у якій ви навчалися. (Наприклад, ФФ-43, ФБ-63.)</li>
+						<li><b><i>Обов'язково</b></i> зазначте роки Вашого навчання! Ви можете ввести з клавіатури або скористатися стрілками.</li>
+					</ul>
+				</p>
+				<br />
+				<h3>Правила заповнення розділу "Міні-опитування"</h3>
+				<p> Цей розділ не є обов'язковим для заповнення!
+				<br/>
+				Але ми сподіваємся, що Ви приділите увагу питанням цього міні-опитування.</p>
+				<a href=" ">Закрыть</a>
+			</div>
+		</div>
+
+
+		</article>
+			
+	</body>
+</html>
+
+
+
+
+
